@@ -96,49 +96,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // ── CONTACT FORM ──────────────────────────────────────────────
-  const form    = document.getElementById('contact-form');
-  const success = document.getElementById('form-success');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Basic validation
-      const required = form.querySelectorAll('[required]');
-      let valid = true;
-
-      required.forEach(field => {
-        field.style.borderColor = '';
-        if (!field.value.trim()) {
-          field.style.borderColor = '#E57373';
-          valid = false;
-        }
-      });
-
-      if (!valid) {
-        const firstInvalid = form.querySelector('[required]:not([value]),[required][value=""]');
-        if (firstInvalid) firstInvalid.focus();
-        return;
-      }
-
-      // Simulate submission (replace with actual endpoint)
-      const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        form.hidden = true;
-        success.hidden = false;
-      }, 900);
-    });
-
-    // Clear error highlight on input
-    form.querySelectorAll('input, textarea').forEach(field => {
-      field.addEventListener('input', () => { field.style.borderColor = ''; });
-    });
-  }
-
   // ── SMOOTH ANCHOR SCROLL (accounts for fixed header) ──────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
